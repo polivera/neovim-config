@@ -2,9 +2,9 @@
 
 local M = {}
 
-M.colorscheme = "tokio-night"
-M.lsp_default_attach = function(_, bufnr)
+local base_lsp_keymaps = function(bufnr)
     local opts = { buffer = bufnr, silent = true }
+
     -- Navigation
     vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "<leader>le", vim.lsp.buf.declaration, opts)
@@ -21,12 +21,48 @@ M.lsp_default_attach = function(_, bufnr)
     vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
 
     -- Formatting
-    vim.keymap.set("n", "<leader>f", function()
+    vim.keymap.set("n", "<leader>lf", function()
         vim.lsp.buf.format({ async = true })
     end, opts)
 
     -- Diagnostics
     -- For diagnostics I am using snacks - @see snacks.lua
+end
+
+local snacks_lsp_keymaps = function(bufnr, snacks)
+    local opts = { buffer = bufnr, silent = true }
+
+    vim.keymap.set("n", "<leader>ld", function()
+        snacks.picker.lsp_definitions()
+    end, opts)
+    vim.keymap.set("n", "<leader>le", function()
+        snacks.picker.lsp_declarations()
+    end, opts)
+    vim.keymap.set("n", "<leader>lr", function()
+        snacks.picker.lsp_references()
+    end, opts)
+    vim.keymap.set("n", "<leader>li", function()
+        snacks.picker.lsp_implementations()
+    end, opts)
+    vim.keymap.set("n", "gy", function()
+        snacks.picker.lsp_type_definitions()
+    end, opts)
+    vim.keymap.set("n", "<leader>ls", function()
+        snacks.picker.lsp_symbols()
+    end, opts)
+
+    vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
+    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
+end
+
+M.colorscheme = "tokionight"
+M.lsp_default_attach = function(_, bufnr)
+    local ok, snacks = pcall(require, "snacks")
+    if ok then
+        snacks_lsp_keymaps(bufnr, snacks)
+        return
+    end
+    base_lsp_keymaps(bufnr)
 end
 
 return M

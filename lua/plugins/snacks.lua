@@ -48,6 +48,20 @@ return {
                 frecency = true,
                 cwd_bonus = true,
             },
+            win = {
+                input = {
+                    keys = {
+                        ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+                        ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+                    },
+                },
+                list = {
+                    keys = {
+                        ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+                        ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+                    },
+                },
+            },
         },
     },
 
@@ -101,9 +115,29 @@ return {
             function()
                 require("snacks").picker.git_log()
             end,
-            desc = "Git Commits",
+            desc = "Git Logs",
         },
-
+        {
+            "<leader>gb",
+            function()
+                require("snacks").picker.git_branches()
+            end,
+            desc = "Git Branches",
+        },
+        {
+            "<leader>gt",
+            function()
+                require("snacks").picker.git_log_file()
+            end,
+            desc = "Git Log File",
+        },
+        {
+            "<leader>ge",
+            function()
+                require("snacks").picker.git_stash()
+            end,
+            desc = "Git Stash",
+        },
         -- Development helpers
         {
             "<leader>le",
