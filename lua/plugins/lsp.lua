@@ -21,6 +21,7 @@ return {
                 "goimports-reviser",
                 "intelephense",
                 "php-cs-fixer",
+                "phpstan",
                 "terraform-ls",
             },
         },

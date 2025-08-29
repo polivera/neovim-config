@@ -4,12 +4,15 @@
 return {
     {
         "sindrets/diffview.nvim",
+        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
     },
     {
         "lewis6991/gitsigns.nvim",
-        lazy = false,
+        lazy = true,
+        event = { "BufReadPre", "BufNewFile" },
         opts = {},
         keys = {
             { "<leader>oa", "<cmd>Gitsigns blame<cr>", desc = "Gitsigns blame" },
@@ -26,6 +29,13 @@ return {
         keys = {
             { "<leader>og", "<cmd>Neogit<cr>", desc = "Neogit" },
             { "<leader>ol", "<cmd>Neogit log<cr>", desc = "Neogit Log" },
+            {
+                "<leader>of",
+                function()
+                    require("neogit").open({ "log", "--", vim.fn.expand("%") })
+                end,
+                desc = "Neogit File Log",
+            },
         },
     },
 }

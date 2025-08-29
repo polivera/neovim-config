@@ -69,9 +69,24 @@ return {
         {
             "<leader>fl",
             function()
-                require("snacks").picker.files()
+                require("snacks").picker.git_files({
+                    hidden = true,
+                    untracked = true,
+                })
             end,
-            desc = "Find Files (snacks picker)",
+            desc = "Find Files",
+        },
+        {
+            "<leader>fL",
+            function()
+                require("snacks").picker.files({
+                    title = "Find All Files",
+                    hidden = true,
+                    untracked = true,
+                    ignored = true,
+                })
+            end,
+            desc = "Find Files (untracked)",
         },
         {
             "<leader>fu",
@@ -100,21 +115,6 @@ return {
                 require("snacks").picker.grep_word()
             end,
             desc = "Grep Word",
-        },
-        -- Development helpers
-        {
-            "<leader>le",
-            function()
-                require("snacks").picker.diagnostics()
-            end,
-            desc = "Diagnostics",
-        },
-        {
-            "<leader>ls",
-            function()
-                require("snacks").picker.symbols()
-            end,
-            desc = "Document Symbols",
         },
     },
 }

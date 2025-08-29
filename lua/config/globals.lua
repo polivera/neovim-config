@@ -24,34 +24,100 @@ local base_lsp_keymaps = function(bufnr)
     vim.keymap.set("n", "<leader>lf", function()
         vim.lsp.buf.format({ async = true })
     end, opts)
-
-    -- Diagnostics
-    -- For diagnostics I am using snacks - @see snacks.lua
 end
 
 local snacks_lsp_keymaps = function(bufnr, snacks)
     local opts = { buffer = bufnr, silent = true }
+    local wk = require("which-key")
+    wk.add({
+        {
+            "<leader>ld",
+            function()
+                snacks.picker.lsp_definitions()
+            end,
+            desc = "Definitions",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>le",
+            function()
+                snacks.picker.lsp_declarations()
+            end,
+            desc = "Declarations",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>lr",
+            function()
+                snacks.picker.lsp_references()
+            end,
+            desc = "References",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>li",
+            function()
+                snacks.picker.lsp_implementations()
+            end,
+            desc = "Implementations",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>ls",
+            function()
+                snacks.picker.lsp_symbols()
+            end,
+            desc = "Symbols",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>ly",
+            function()
+                snacks.picker.lsp_type_definitions()
+            end,
+            desc = "Type Definitions",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>la",
+            vim.lsp.buf.code_action,
+            desc = "Code Actions",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>ln",
+            vim.lsp.buf.rename,
+            desc = "Code Rename",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>le",
+            function()
+                require("snacks").picker.diagnostics()
+            end,
+            desc = "Diagnostics",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+    })
 
-    vim.keymap.set("n", "<leader>ld", function()
-        snacks.picker.lsp_definitions()
-    end, opts)
-    vim.keymap.set("n", "<leader>le", function()
-        snacks.picker.lsp_declarations()
-    end, opts)
-    vim.keymap.set("n", "<leader>lr", function()
-        snacks.picker.lsp_references()
-    end, opts)
-    vim.keymap.set("n", "<leader>li", function()
-        snacks.picker.lsp_implementations()
-    end, opts)
-    vim.keymap.set("n", "gy", function()
-        snacks.picker.lsp_type_definitions()
-    end, opts)
-    vim.keymap.set("n", "<leader>ls", function()
-        snacks.picker.lsp_symbols()
-    end, opts)
-
-    vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
 end
 

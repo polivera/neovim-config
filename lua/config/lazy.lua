@@ -27,6 +27,7 @@ M.load = function()
         spec = {
             -- List of plugins here with the format { import = "package.path" },
             { import = "plugins.treesitter" },
+            { import = "plugins.which-key" },
             { import = "plugins.snacks" },
             { import = "plugins.lsp" },
             { import = "plugins.completion" },
@@ -35,6 +36,8 @@ M.load = function()
             { import = "plugins.theme" },
             { import = "plugins.todo" },
             { import = "plugins.vcs" },
+            { import = "plugins.noice" },
+            { import = "plugins.lualine" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates
