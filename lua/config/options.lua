@@ -66,7 +66,7 @@ return {
             foldlevelstart = 99, -- Start with all folds open
 
             -- Timing Settings
-            timeoutlen = 200, -- Time to wait for mapped sequence to complete (ms)
+            timeoutlen = 400, -- Time to wait for mapped sequence to complete (ms)
             ttimeoutlen = 10, -- Time to wait for key code sequence to complete (ms)
             updatetime = 100, -- Time before triggering CursorHold event (ms)
 

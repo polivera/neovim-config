@@ -34,6 +34,7 @@ M.load = function()
             { import = "plugins.oil" },
             { import = "plugins.theme" },
             { import = "plugins.todo" },
+            { import = "plugins.vcs" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates

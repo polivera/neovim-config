@@ -101,43 +101,6 @@ return {
             end,
             desc = "Grep Word",
         },
-
-        -- Git integration
-        {
-            "<leader>gl",
-            function()
-                require("snacks").picker.git_files()
-            end,
-            desc = "Git Files",
-        },
-        {
-            "<leader>go",
-            function()
-                require("snacks").picker.git_log()
-            end,
-            desc = "Git Logs",
-        },
-        {
-            "<leader>gb",
-            function()
-                require("snacks").picker.git_branches()
-            end,
-            desc = "Git Branches",
-        },
-        {
-            "<leader>gt",
-            function()
-                require("snacks").picker.git_log_file()
-            end,
-            desc = "Git Log File",
-        },
-        {
-            "<leader>ge",
-            function()
-                require("snacks").picker.git_stash()
-            end,
-            desc = "Git Stash",
-        },
         -- Development helpers
         {
             "<leader>le",
