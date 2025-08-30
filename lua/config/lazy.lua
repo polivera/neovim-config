@@ -38,6 +38,8 @@ M.load = function()
             { import = "plugins.vcs" },
             { import = "plugins.noice" },
             { import = "plugins.lualine" },
+            { import = "plugins.trouble" },
+            { import = "plugins.dap" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates

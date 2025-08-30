@@ -16,12 +16,17 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         opts = {
             ensure_installed = {
+                -- Lua
                 "lua_ls",
                 "stylua",
+                -- Go
                 "goimports-reviser",
+                -- PHP
                 "intelephense",
                 "php-cs-fixer",
                 "phpstan",
+                "php-debug-adapter",
+                -- Terraform
                 "terraform-ls",
             },
         },

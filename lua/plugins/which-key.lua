@@ -13,6 +13,7 @@ return {
             { "<leader>l", group = "LSP" },
             { "<leader>o", group = "Git" },
             { "<leader>s", group = "TODOs" },
+            { "<leader>x", group = "Trouble" },
         })
     end,
     keys = {

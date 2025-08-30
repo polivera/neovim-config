@@ -1,10 +1,13 @@
--- LSP configuration for lua_ls
-local globals = require("config.globals")
+-- LSP configuration for PHP (intelephense)
 local M = {}
 
 M.setup = function()
-    vim.lsp.config("intelephense", {
+    local lspconfig = require("lspconfig")
+    local globals = require("config.globals")
+
+    lspconfig.intelephense.setup({
         on_attach = globals.lsp_default_attach,
+        capabilities = vim.lsp.protocol.make_client_capabilities(),
         settings = {
             intelephense = {
                 files = {
@@ -21,7 +24,7 @@ M.setup = function()
                 },
                 format = {
                     enable = true,
-                    braces = "k&r", -- or "allman"
+                    braces = "k&r",
                 },
                 completion = {
                     insertUseDeclaration = true,
@@ -31,18 +34,16 @@ M.setup = function()
                 },
                 diagnostics = {
                     enable = true,
-                    run = "onType", -- or "onSave"
+                    run = "onType",
                     embeddedLanguages = true,
                 },
                 phpdoc = {
                     returnVoid = true,
                     textFormat = "snippet",
                 },
-                runtime = {
-                    version = "8.2", -- Adjust to your PHP version
-                },
                 environment = {
-                    includePaths = { "vendor" },
+                    phpVersion = "8.3.0",
+                    includePaths = { "vendor/" },
                 },
             },
         },

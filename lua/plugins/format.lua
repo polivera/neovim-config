@@ -20,9 +20,10 @@ return {
                 command = "php-cs-fixer",
                 args = {
                     "fix",
-                    "$FILENAME",
-                    "--rules=@PSR12", -- or your preferred ruleset
+                    "--rules=@PSR12,no_extra_blank_lines,single_blank_line_at_eof,no_trailing_whitespace", -- or your preferred ruleset
                     "--using-cache=no",
+                    "--diff",
+                    "$FILENAME",
                 },
                 stdin = false,
             },
