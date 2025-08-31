@@ -5,8 +5,8 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            require("plugins.languages.lua").setup()
-            require("plugins.languages.php").setup()
+            require("plugins.languages.lua").setup(lspconfig)
+            require("plugins.languages.php").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
         end,
     },
@@ -28,6 +28,7 @@ return {
                 "php-debug-adapter",
                 -- Terraform
                 "terraform-ls",
+                "terraform",
             },
         },
     },

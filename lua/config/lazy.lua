@@ -40,6 +40,7 @@ M.load = function()
             { import = "plugins.lualine" },
             { import = "plugins.trouble" },
             { import = "plugins.dap" },
+            { import = "plugins.nvim-tree" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates

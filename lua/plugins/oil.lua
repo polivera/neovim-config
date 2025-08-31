@@ -11,6 +11,6 @@ return {
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     keys = {
-        { "<leader>\\", "<cmd>Oil<cr>", desc = "Oil file explorer" },
+        { "<leader>/", "<cmd>Oil<cr>", desc = "Oil file explorer" },
     },
 }

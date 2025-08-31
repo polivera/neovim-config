@@ -1,8 +1,7 @@
 -- LSP configuration for PHP (intelephense)
 local M = {}
 
-M.setup = function()
-    local lspconfig = require("lspconfig")
+M.setup = function(lspconfig)
     local globals = require("config.globals")
 
     lspconfig.intelephense.setup({

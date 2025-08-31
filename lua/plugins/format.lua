@@ -8,6 +8,7 @@ return {
             lua = { "stylua" },
             go = { "goimports-reviser", "goimports", "gofmt", stop_after_first = true },
             php = { "php-cs-fixer" },
+            terraform = { "terraform" },
         },
 
         format_on_save = {
@@ -23,6 +24,15 @@ return {
                     "--rules=@PSR12,no_extra_blank_lines,single_blank_line_at_eof,no_trailing_whitespace", -- or your preferred ruleset
                     "--using-cache=no",
                     "--diff",
+                    "$FILENAME",
+                },
+                stdin = false,
+            },
+            ["terraform"] = {
+                command = "terraform",
+                args = {
+                    "fmt",
+                    "-diff",
                     "$FILENAME",
                 },
                 stdin = false,
