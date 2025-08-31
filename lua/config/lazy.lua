@@ -40,6 +40,7 @@ M.load = function()
             { import = "plugins.lualine" },
             { import = "plugins.trouble" },
             { import = "plugins.dap" },
+            { import = "plugins.autopair" },
             -- { import = "plugins.neotest" },
             { import = "plugins.nvim-tree" },
             { import = "plugins.gen" },
