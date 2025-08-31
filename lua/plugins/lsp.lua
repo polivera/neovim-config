@@ -7,6 +7,7 @@ return {
             local lspconfig = require("lspconfig")
             require("plugins.languages.lua").setup(lspconfig)
             require("plugins.languages.php").setup(lspconfig)
+            require("plugins.languages.go").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
         end,
     },
@@ -20,7 +21,9 @@ return {
                 "lua_ls",
                 "stylua",
                 -- Go
+                "gopls",
                 "goimports-reviser",
+                "delve",
                 -- PHP
                 "intelephense",
                 "php-cs-fixer",

@@ -54,5 +54,6 @@ return {
 
         -- Custom language configuration
         require("plugins.daps.php").setup()
+        require("plugins.daps.go").setup()
     end,
 }
