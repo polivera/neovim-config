@@ -40,11 +40,11 @@ M.load = function()
             { import = "plugins.lualine" },
             { import = "plugins.trouble" },
             { import = "plugins.dap" },
-            { import = "plugins.autopair" },
             -- { import = "plugins.neotest" },
             { import = "plugins.nvim-tree" },
             { import = "plugins.gen" },
             -- { import = "plugins.avante" },
+            { import = "plugins.testonga" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates
