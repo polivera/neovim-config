@@ -42,6 +42,8 @@ M.load = function()
             { import = "plugins.dap" },
             -- { import = "plugins.neotest" },
             { import = "plugins.nvim-tree" },
+            { import = "plugins.gen" },
+            -- { import = "plugins.avante" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates
