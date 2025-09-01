@@ -28,6 +28,7 @@ M.load = function()
             -- List of plugins here with the format { import = "package.path" },
             { import = "plugins.treesitter" },
             { import = "plugins.which-key" },
+            { import = "plugins.autopair" },
             { import = "plugins.snacks" },
             { import = "plugins.lsp" },
             { import = "plugins.completion" },
