@@ -9,6 +9,7 @@ return {
             go = { "goimports-reviser", "goimports", "gofmt", stop_after_first = true },
             php = { "php-cs-fixer" },
             terraform = { "terraform" },
+            templ = { "templ" },
         },
 
         format_on_save = {
@@ -36,6 +37,13 @@ return {
                     "$FILENAME",
                 },
                 stdin = false,
+            },
+            ["templ"] = {
+                command = "templ",
+                args = {
+                    "fmt",
+                },
+                stdin = true,
             },
         },
     },

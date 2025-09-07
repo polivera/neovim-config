@@ -44,6 +44,7 @@ M.load = function()
             -- { import = "plugins.neotest" },
             { import = "plugins.nvim-tree" },
             { import = "plugins.gen" },
+            { import = "plugins.harpoon" },
             -- { import = "plugins.avante" },
             { import = "plugins.testonga" },
         },

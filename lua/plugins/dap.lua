@@ -22,12 +22,21 @@ return {
                     step_into = "⏎",
                     step_over = "⏭",
                     step_out = "⏮",
-                    step_back = "b",
+                    step_back = "B",
                     run_last = "▶▶",
                     terminate = "⏹",
                     disconnect = "⏏",
                 },
             },
+            floating = {
+                max_height = nil,
+                max_width = 0.5, -- Use 50% of screen width
+                border = "rounded",
+                mappings = {
+                    close = { "q", "<Esc>" },
+                },
+            },
+            force_buffers = true,
         })
 
         -- Automatically open/close DAP UI
@@ -51,6 +60,27 @@ return {
 
         -- Setup virtual text to show variable values inline
         require("nvim-dap-virtual-text").setup({})
+
+        vim.fn.sign_define("DapBreakpoint", {
+            text = "🔴", -- Red circle emoji
+            texthl = "DapBreakpoint",
+            linehl = "",
+            numhl = "",
+        })
+
+        vim.fn.sign_define("DapStopped", {
+            text = "👉", -- Pointing finger
+            texthl = "DapStopped",
+            linehl = "DapStoppedLine",
+            numhl = "DapStopped",
+        })
+
+        -- Set custom colors for better visibility
+        vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#e51400" }) -- Bright red
+        vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#f79000" }) -- Orange
+        vim.api.nvim_set_hl(0, "DapStopped", { fg = "#00f000" }) -- Bright green
+        vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#2a3a2a" }) -- Dark green background
+        vim.api.nvim_set_hl(0, "DapBreakpointRejected", { fg = "#888888" }) -- Gray
 
         -- Custom language configuration
         require("plugins.daps.php").setup()

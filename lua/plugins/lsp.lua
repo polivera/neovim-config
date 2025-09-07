@@ -8,6 +8,7 @@ return {
             require("plugins.languages.lua").setup(lspconfig)
             require("plugins.languages.php").setup(lspconfig)
             require("plugins.languages.go").setup(lspconfig)
+            require("plugins.languages.templ").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
         end,
     },
@@ -24,6 +25,7 @@ return {
                 "gopls",
                 "goimports-reviser",
                 "delve",
+                "templ",
                 -- PHP
                 "intelephense",
                 "php-cs-fixer",

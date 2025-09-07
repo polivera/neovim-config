@@ -54,7 +54,9 @@ M.init = function()
     -- Activate sessionizer
     vim.keymap.set("n", "<C-p>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>", opts)
 
+    -- Buffer
     vim.keymap.set("n", "<leader>wr", "<cmd>edit!<cr>", { desc = "Reload buffer" })
+    vim.keymap.set("n", "<C-0>", "<C-^>", { desc = "Jump to alternate buffer" })
 end
 
 return M

@@ -20,6 +20,6 @@ return {
         },
     },
     keys = {
-        { "<leader>\\", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" },
+        { "<leader>\\", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle NvimTree" },
     },
 }
