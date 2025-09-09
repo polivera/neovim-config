@@ -6,11 +6,28 @@ local M = {}
 
 M.setup = function(opts)
     opts = opts or {}
+    vim.inspect(opts)
     print("calling setup")
 end
 
-M.current = function(_)
-    print("Exec Current")
+M.exec_current_test = function(_)
+    print("execute test your cursor is currently on")
+end
+
+M.exec_current_file = function(_)
+    print("Execute the current file")
+end
+
+M.list_current_file_tests = function(_)
+    print("Get the tests of the currnet file")
+end
+
+M.open_current_file_test = function(_)
+    print("open test of the current file")
+end
+
+M.create_test_for_current_file = function()
+    print("Create a test for the current file")
 end
 
 -- Functions that we need

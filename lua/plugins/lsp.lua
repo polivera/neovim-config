@@ -10,6 +10,7 @@ return {
             require("plugins.languages.go").setup(lspconfig)
             require("plugins.languages.templ").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
+            require("plugins.languages.javascript").setup(lspconfig)
         end,
     },
     { "mason-org/mason.nvim", opts = {} },
@@ -34,6 +35,9 @@ return {
                 -- Terraform
                 "terraform-ls",
                 "terraform",
+                -- Javascript
+                "typescript-language-server",
+                "prettier",
             },
         },
     },
