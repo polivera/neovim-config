@@ -13,6 +13,22 @@ return {
                 ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
             },
         },
+        -- Add the views configuration here
+        routes = {
+            {
+                filter = {
+                    event = "msg_show",
+                    any = {
+                        { find = "%d+L, %d+B" },
+                        { find = "; after #%d+" },
+                        { find = "; before #%d+" },
+                        { find = "%d fewer lines" },
+                        { find = "%d more lines" },
+                    },
+                },
+                opts = { skip = true },
+            },
+        },
         -- you can enable a preset for easier configuration
         presets = {
             bottom_search = true, -- use a classic bottom cmdline for search
@@ -33,7 +49,10 @@ return {
         health = { enabled = true },
         popupmenu = { enabled = true },
         signature = { enabled = true },
-        notify = { enabled = true },
+        notify = {
+            enabled = true,
+            view = "notify",
+        },
     },
     dependencies = {
         "MunifTanjim/nui.nvim",

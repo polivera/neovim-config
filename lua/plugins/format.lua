@@ -11,6 +11,7 @@ return {
             terraform = { "terraform" },
             templ = { "templ" },
             javascript = { "prettier" },
+            yaml = { "prettier" },
         },
 
         format_on_save = {

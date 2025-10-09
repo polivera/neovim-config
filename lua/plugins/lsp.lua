@@ -11,6 +11,11 @@ return {
             require("plugins.languages.templ").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
             require("plugins.languages.javascript").setup(lspconfig)
+            require("plugins.languages.vue").setup(lspconfig)
+            require("plugins.languages.css").setup(lspconfig)
+            require("plugins.languages.html").setup(lspconfig)
+            require("plugins.languages.docker").setup(lspconfig)
+            require("plugins.languages.docker-compose").setup(lspconfig)
         end,
     },
     { "mason-org/mason.nvim", opts = {} },
@@ -38,6 +43,13 @@ return {
                 -- Javascript
                 "typescript-language-server",
                 "prettier",
+                "vue-language-server",
+                -- HTML/CSS
+                "css-lsp",
+                "html-lsp",
+                -- Docker
+                "docker-language-server",
+                "docker-compose-language-service",
             },
         },
     },

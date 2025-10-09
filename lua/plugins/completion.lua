@@ -29,8 +29,10 @@ return {
                     draw = {
                         treesitter = { "lsp" },
                         columns = {
-                            { "kind_icon", "label", "label_description", gap = 1 },
+                            { "kind_icon" },
+                            { "label", "label_description", gap = 1 },
                             { "kind" },
+                            { "source_name" },
                         },
                     },
                 },

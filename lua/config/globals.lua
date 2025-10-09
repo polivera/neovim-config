@@ -116,6 +116,32 @@ local snacks_lsp_keymaps = function(bufnr, snacks)
             buffer = bufnr,
             silent = true,
         },
+        {
+            "<leader>ll",
+            vim.lsp.buf.hover,
+            desc = "Hover Documentation",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>lk",
+            vim.lsp.buf.signature_help,
+            desc = "Signature Help",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>lf",
+            function()
+                vim.lsp.buf.format({ async = true })
+            end,
+            desc = "Format",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
     })
 
     vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, opts)
