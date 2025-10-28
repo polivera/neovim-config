@@ -11,7 +11,6 @@ return {
             require("plugins.languages.templ").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
             require("plugins.languages.javascript").setup(lspconfig)
-            require("plugins.languages.vue").setup(lspconfig)
             require("plugins.languages.css").setup(lspconfig)
             require("plugins.languages.html").setup(lspconfig)
             require("plugins.languages.docker").setup(lspconfig)
