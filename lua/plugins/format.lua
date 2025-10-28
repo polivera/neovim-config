@@ -12,6 +12,7 @@ return {
             templ = { "templ" },
             javascript = { "prettier" },
             yaml = { "prettier" },
+            vue = { "prettier" },
         },
 
         format_on_save = {
