@@ -1,43 +1,43 @@
 return {
     "huggingface/llm.nvim",
     opts = {
-        -- Backend configuration
         backend = "ollama",
-        url = "http://192.168.0.123:11434",
-        model = "codellama:7b",
+        url = "http://127.0.0.1:11434",
+        model = "codellama:7b-code",
 
-        -- UI configuration - this is the key part for shadow text
-        tokens_to_clear = { "<|endoftext|>" },
+        tokens_to_clear = { "" },
         fim = {
             enabled = true,
-            prefix = "<PRE> ",
-            middle = " <MID>",
-            suffix = " <SUF>",
+            prefix = "▁<PRE>",
+            middle = "▁<MID>",
+            suffix = "▁<SUF>",
         },
 
-        -- Completion behavior
         debounce_ms = 150,
         accept_keymap = "<Tab>",
         dismiss_keymap = "<S-Tab>",
         tls_skip_verify_insecure = false,
 
-        -- Auto-suggestions (like Copilot)
-        context_window = 8192,
+        context_window = 4096,
         enable_suggestions_on_startup = true,
+
+        request_body = {
+            options = {
+                temperature = 0.2,
+                top_p = 0.95,
+                num_predict = 64,
+            },
+        },
     },
     keys = {
         {
             "<leader>ai",
-            function()
-                require("llm").toggle_auto_complete()
-            end,
+            "<cmd>LLMToggleAutoSuggest<cr>",
             desc = "Toggle AI auto-complete",
         },
         {
             "<leader>as",
-            function()
-                require("llm").suggest()
-            end,
+            "<cmd>LLMSuggestion<cr>",
             desc = "Trigger AI suggestion",
         },
     },

@@ -17,6 +17,27 @@ return {
     {
         "saghen/blink.cmp",
         opts = {
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+                providers = {
+                    -- Add Obsidian as a completion source
+                    obsidian = {
+                        name = "obsidian",
+                        module = "blink.compat.source",
+                        score_offset = 100, -- Prioritize obsidian completions
+                    },
+                    obsidian_new = {
+                        name = "obsidian_new",
+                        module = "blink.compat.source",
+                        score_offset = 90,
+                    },
+                    obsidian_tags = {
+                        name = "obsidian_tags",
+                        module = "blink.compat.source",
+                        score_offset = 80,
+                    },
+                },
+            },
             signature = {
                 enabled = true,
                 window = {

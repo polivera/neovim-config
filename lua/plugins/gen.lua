@@ -1,11 +1,11 @@
 return {
     "David-Kunz/gen.nvim",
     opts = {
-        model = "codellama:7b", -- The default model to use.
+        model = "codellama:7b-code", -- The default model to use.
         quit_map = "q", -- set keymap to close the response window
         retry_map = "<c-r>", -- set keymap to re-send the current prompt
         accept_map = "<c-cr>", -- set keymap to replace the previous selection with the last result
-        host = "192.168.0.123", -- The host running the Ollama service.
+        host = "127.0.0.1", -- The host running the Ollama service.
         port = "11434", -- The port on which the Ollama service is listening.
         display_mode = "vertical-split", -- The display mode. Can be "float" or "split" or "horizontal-split" or "vertical-split".
         show_prompt = true, -- Shows the prompt submitted to Ollama. Can be true (3 lines) or "full".

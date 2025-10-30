@@ -26,34 +26,34 @@ local base_lsp_keymaps = function(bufnr)
     end, opts)
 end
 
-local snacks_lsp_keymaps = function(bufnr, snacks)
+local snacks_lsp_keymaps = function(bufnr, telescope)
     local opts = { buffer = bufnr, silent = true }
     local wk = require("which-key")
     wk.add({
         {
             "<leader>ld",
             function()
-                snacks.picker.lsp_definitions()
+                telescope.lsp_definitions()
             end,
             desc = "Definitions",
             mode = "n",
             buffer = bufnr,
             silent = true,
         },
-        {
-            "<leader>le",
-            function()
-                snacks.picker.lsp_declarations()
-            end,
-            desc = "Declarations",
-            mode = "n",
-            buffer = bufnr,
-            silent = true,
-        },
+        -- {
+        --     "<leader>le",
+        --     function()
+        --         telescope.lsp_declarations()
+        --     end,
+        --     desc = "Declarations",
+        --     mode = "n",
+        --     buffer = bufnr,
+        --     silent = true,
+        -- },
         {
             "<leader>lr",
             function()
-                snacks.picker.lsp_references()
+                telescope.lsp_references()
             end,
             desc = "References",
             mode = "n",
@@ -63,7 +63,7 @@ local snacks_lsp_keymaps = function(bufnr, snacks)
         {
             "<leader>li",
             function()
-                snacks.picker.lsp_implementations()
+                telescope.lsp_implementations()
             end,
             desc = "Implementations",
             mode = "n",
@@ -73,7 +73,17 @@ local snacks_lsp_keymaps = function(bufnr, snacks)
         {
             "<leader>ls",
             function()
-                snacks.picker.lsp_symbols()
+                telescope.lsp_document_symbols()
+            end,
+            desc = "Symbols",
+            mode = "n",
+            buffer = bufnr,
+            silent = true,
+        },
+        {
+            "<leader>lS",
+            function()
+                telescope.lsp_workspace_symbols()
             end,
             desc = "Symbols",
             mode = "n",
@@ -83,7 +93,7 @@ local snacks_lsp_keymaps = function(bufnr, snacks)
         {
             "<leader>ly",
             function()
-                snacks.picker.lsp_type_definitions()
+                telescope.lsp_type_definitions()
             end,
             desc = "Type Definitions",
             mode = "n",
@@ -109,7 +119,7 @@ local snacks_lsp_keymaps = function(bufnr, snacks)
         {
             "<leader>le",
             function()
-                require("snacks").picker.diagnostics()
+                telescope.diagnostics()
             end,
             desc = "Diagnostics",
             mode = "n",
@@ -149,7 +159,7 @@ end
 
 M.colorscheme = "tokionight"
 M.lsp_default_attach = function(_, bufnr)
-    local ok, snacks = pcall(require, "snacks")
+    local ok, snacks = pcall(require, "telescope.builtin")
     if ok then
         snacks_lsp_keymaps(bufnr, snacks)
         return

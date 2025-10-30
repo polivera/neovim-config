@@ -1,21 +1,26 @@
 -- TODO: Do something with this
+-- TODO: Something else
 return {
     "folke/todo-comments.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+    },
     opts = {},
+    config = function()
+        require("todo-comments").setup()
+        require("telescope").load_extension("todo-comments")
+    end,
     keys = {
         {
-            "<leader>sT",
-            function()
-                require("snacks").picker.todo_comments()
-            end,
-            desc = "Todo",
+            "<leader>ft",
+            "<cmd>TodoTelescope<cr>",
+            desc = "Todo (Telescope)",
         },
         {
-            "<leader>st",
-            function()
-                require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
-            end,
-            desc = "Todo/Fix/Fixme",
+            "<leader>fT",
+            "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",
+            desc = "Todo/Fix/Fixme (Telescope)",
         },
     },
 }

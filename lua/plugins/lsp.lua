@@ -13,6 +13,7 @@ return {
             require("plugins.languages.javascript").setup(lspconfig)
             require("plugins.languages.css").setup(lspconfig)
             require("plugins.languages.html").setup(lspconfig)
+            require("plugins.languages.tailwindcss").setup(lspconfig)
             require("plugins.languages.docker").setup(lspconfig)
             require("plugins.languages.docker-compose").setup(lspconfig)
         end,
@@ -46,6 +47,7 @@ return {
                 -- HTML/CSS
                 "css-lsp",
                 "html-lsp",
+                "tailwindcss",
                 -- Docker
                 "docker-language-server",
                 "docker-compose-language-service",

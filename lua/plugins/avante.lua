@@ -14,8 +14,8 @@ return {
         provider = "ollama",
         providers = {
             ollama = {
-                endpoint = "http://192.168.0.123:11434",
-                model = "codellama:7b",
+                endpoint = "http://127.0.0.1:11434",
+                model = "codellama:7b-code",
                 stream = true,
             },
         },
