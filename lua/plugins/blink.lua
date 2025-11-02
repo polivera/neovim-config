@@ -38,6 +38,10 @@ return {
                     },
                 },
             },
+            cmdline = {},
+            per_filetype = {
+                markdown = { "obsidian", "obsidian_new", "obsidian_tags", "lsp", "path", "snippets", "buffer" },
+            },
             signature = {
                 enabled = true,
                 window = {

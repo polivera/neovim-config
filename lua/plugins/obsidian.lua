@@ -42,7 +42,7 @@ return {
 
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
         completion = {
-            nvim_cmp = false,
+            nvim_cmp = true,
             min_chars = 2,
         },
 
@@ -122,13 +122,6 @@ return {
 
             -- Runs after creating a new note
             post_create = function(client, note) end,
-        },
-
-        -- Optional, for templates
-        templates = {
-            subdir = "templates",
-            date_format = "%Y-%m-%d",
-            time_format = "%H:%M",
         },
     },
 
