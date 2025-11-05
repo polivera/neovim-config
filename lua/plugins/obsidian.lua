@@ -21,10 +21,10 @@ return {
                 name = "Personal",
                 path = "~/Projects/Personal/vaults/vault-personal/",
             },
-            -- {
-            --     name = "Work",
-            --     path = "~/Projects/Personal/vaults/vault-work/",
-            -- },
+            {
+                name = "Work",
+                path = "~/Projects/Personal/vaults/vault-work/",
+            },
         },
 
         note_id_func = function(title)

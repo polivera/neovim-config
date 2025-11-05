@@ -8,34 +8,25 @@ return {
     config = function()
         require("codecompanion").setup({
             adapters = {
-                ollama = function()
-                    return require("codecompanion.adapters").extend("ollama", {
-                        schema = {
-                            model = {
-                                default = "codellama:7b-code",
+                http = {
+                    anthropic = function()
+                        return require("codecompanion.adapters").extend("anthropic", {
+                            env = {
+                                api_key = "MY_OTHER_ANTHROPIC_KEY",
                             },
-                            num_ctx = {
-                                default = 8192,
-                            },
-                            num_predict = {
-                                default = 64,
-                            },
-                        },
-                        env = {
-                            url = "http://127.0.0.1:11434",
-                        },
-                    })
-                end,
+                        })
+                    end,
+                },
             },
             strategies = {
                 chat = {
-                    adapter = "ollama",
+                    adapter = "anthropic",
                 },
                 inline = {
-                    adapter = "ollama",
+                    adapter = "anthropic",
                 },
                 agent = {
-                    adapter = "ollama",
+                    adapter = "anthropic",
                 },
             },
         })
