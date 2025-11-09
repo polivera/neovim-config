@@ -3,6 +3,11 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        opts = {
+            diagnostics = {
+                virtual_text = false,
+            },
+        },
         config = function()
             local lspconfig = require("lspconfig")
             require("plugins.languages.lua").setup(lspconfig)

@@ -49,6 +49,7 @@ M.load = function()
             -- { import = "plugins.avante" },
             -- { import = "plugins.llm" },
             -- { import = "plugins.codecompanion" },
+            { import = "plugins.inline-diagnostics" },
             { import = "plugins.harpoon" },
             { import = "plugins.render-markdown" },
             { import = "plugins.obsidian" },
