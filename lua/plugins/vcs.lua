@@ -25,7 +25,13 @@ return {
             "nvim-lua/plenary.nvim",
             "sindrets/diffview.nvim",
         },
-        opts = {},
+        opts = {
+            commit_editor = {
+                -- kind = "split",
+                staged_diff_split_kind = "vsplit",
+                show_staged_diff = true,
+            },
+        },
         keys = {
             { "<leader>og", "<cmd>Neogit<cr>", desc = "Neogit" },
             { "<leader>ol", "<cmd>Neogit log<cr>", desc = "Neogit Log" },
