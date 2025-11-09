@@ -7,7 +7,6 @@ local M = {}
 M.setup = function(opts)
     opts = opts or {}
     vim.inspect(opts)
-    print("calling setup")
 end
 
 M.exec_current_test = function(_)

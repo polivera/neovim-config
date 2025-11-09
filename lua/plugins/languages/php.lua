@@ -6,7 +6,10 @@ M.setup = function(lspconfig)
 
     lspconfig.intelephense.setup({
         on_attach = globals.lsp_default_attach,
-        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        capabilities = globals.get_capabilities(),
+        init_options = {
+            licenceKey = os.getenv("INTELEPHENSE_KEY"),
+        },
         settings = {
             intelephense = {
                 files = {
