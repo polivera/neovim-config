@@ -50,6 +50,7 @@ M.load = function()
             -- { import = "plugins.llm" },
             -- { import = "plugins.codecompanion" },
             { import = "plugins.harpoon" },
+            { import = "plugins.render-markdown" },
             { import = "plugins.obsidian" },
             { import = "plugins.testonga" },
         },

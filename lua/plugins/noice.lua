@@ -24,7 +24,18 @@ return {
                         { find = "; before #%d+" },
                         { find = "%d fewer lines" },
                         { find = "%d more lines" },
+                        { find = "written" },
+                        { find = "yanked" },
+                        { find = "search hit" },
                     },
+                },
+                opts = { skip = true },
+            },
+            -- Route LSP messages to reduce notification spam
+            {
+                filter = {
+                    event = "lsp",
+                    kind = "progress",
                 },
                 opts = { skip = true },
             },
@@ -56,6 +67,16 @@ return {
     },
     dependencies = {
         "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
+        {
+            "rcarriga/nvim-notify",
+            config = function()
+                require("notify").setup({
+                    stages = "fade",
+                    timeout = 3000,
+                    top_down = false, -- Notifications appear from bottom
+                    render = "compact",
+                })
+            end,
+        },
     },
 }
