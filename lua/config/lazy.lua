@@ -53,6 +53,7 @@ M.load = function()
             { import = "plugins.harpoon" },
             { import = "plugins.render-markdown" },
             { import = "plugins.obsidian" },
+            { import = "plugins.pathinfo" },
             { import = "plugins.testonga" },
         },
         install = { colorscheme = { globals.colorscheme } },

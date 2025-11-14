@@ -1,0 +1,2 @@
+-- Plugin loader for pathinfo
+-- This file ensures the plugin is loaded when Neovim starts
