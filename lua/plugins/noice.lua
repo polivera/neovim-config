@@ -71,6 +71,7 @@ return {
             "rcarriga/nvim-notify",
             config = function()
                 require("notify").setup({
+                    background_colour = "#282828", -- Gruvbox dark0
                     stages = "fade",
                     timeout = 3000,
                     top_down = false, -- Notifications appear from bottom
