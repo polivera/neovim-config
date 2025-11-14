@@ -11,7 +11,7 @@ M.setup = function(lspconfig)
 
     lspconfig.ts_ls.setup({
         on_attach = globals.lsp_default_attach,
-        capabilities = vim.lsp.protocol.make_client_capabilities(),
+        capabilities = globals.get_capabilities(),
         init_options = {
             plugins = {
                 {
