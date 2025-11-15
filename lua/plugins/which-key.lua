@@ -9,6 +9,8 @@ return {
         wk.setup(opts)
 
         wk.add({
+            { "<leader>b", group = "Obsidian" },
+            { "<leader>h", group = "Harpoon" },
             { "<leader>f", group = "Find" },
             { "<leader>l", group = "LSP" },
             { "<leader>o", group = "Git" },
