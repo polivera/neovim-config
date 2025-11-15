@@ -13,6 +13,9 @@ return {
 
         dapui.setup({
             icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+            render = {
+                max_value_lines = 100,
+            },
             controls = {
                 element = "repl",
                 enabled = true,
