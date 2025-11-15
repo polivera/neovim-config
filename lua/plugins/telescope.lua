@@ -64,6 +64,7 @@ return {
                         ["<C-d>"] = actions.preview_scrolling_down,
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-k>"] = actions.move_selection_previous,
+                        ["<C-f>"] = actions.to_fuzzy_refine,
                         ["<esc>"] = actions.close,
                     },
                     n = {
@@ -148,6 +149,21 @@ return {
                 require("telescope.builtin").grep_string()
             end,
             desc = "Grep Word (Telescope)",
+        },
+        {
+            "<leader>fJ",
+            function()
+                vim.ui.input({ prompt = "File glob (e.g., *.lua, *.{rs,toml}): " }, function(glob)
+                    if glob and glob ~= "" then
+                        require("telescope.builtin").live_grep({
+                            additional_args = function()
+                                return { "--hidden", "-g", glob }
+                            end,
+                        })
+                    end
+                end)
+            end,
+            desc = "Grep with file filter",
         },
     },
 }
