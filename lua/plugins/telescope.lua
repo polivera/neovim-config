@@ -7,6 +7,7 @@ return {
             "nvim-telescope/telescope-fzf-native.nvim",
             build = "make",
         },
+        "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-tree/nvim-web-devicons",
     },
     config = function()
@@ -91,11 +92,15 @@ return {
                     override_file_sorter = true,
                     case_mode = "smart_case",
                 },
+                live_grep_args = {
+                    auto_quoting = true,
+                },
             },
         })
 
         -- Load extensions
         telescope.load_extension("fzf")
+        telescope.load_extension("live_grep_args")
     end,
     keys = {
         {
