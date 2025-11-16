@@ -3,6 +3,7 @@
 ---@field adapters AdapterInterface[]
 
 local M = {}
+local util = require("mylib")
 
 M.setup = function(opts)
     opts = opts or {}
@@ -10,6 +11,8 @@ M.setup = function(opts)
 end
 
 M.exec_current_test = function(_)
+    local bftype = util.buffer.get_buffer_filetype()
+    vim.notify(bftype)
     print("execute test your cursor is currently on")
 end
 
