@@ -31,9 +31,9 @@ local PHPAdapter = AdapterInterface:new({
 
         for i = line + 1, 1, -1 do
             if lines[i] then
-                -- Match PHPUnit test methods: public function testSomething()
+                -- Match PHPUnit test methods: public function testSomething() or test_Something()
                 -- Also match: /** @test */ public function something()
-                local method_match = lines[i]:match("function%s+(test%w+)%s*%(")
+                local method_match = lines[i]:match("function%s+(test[_a-zA-Z0-9]+)%s*%(")
                 if method_match then
                     return method_match
                 end
@@ -69,8 +69,8 @@ local PHPAdapter = AdapterInterface:new({
                 has_test_annotation = true
             end
 
-            -- Match test methods: public function testSomething()
-            local method_match = line:match("function%s+(test%w+)%s*%(")
+            -- Match test methods: public function testSomething() or test_Something()
+            local method_match = line:match("function%s+(test[_a-zA-Z0-9]+)%s*%(")
             if method_match then
                 table.insert(tests, {
                     name = method_match,

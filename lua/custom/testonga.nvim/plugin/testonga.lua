@@ -19,3 +19,10 @@ end, {
     nargs = 0,
     desc = "Run all the test on current file test",
 })
+
+vim.api.nvim_create_user_command("TestongaRepeatLastTest", function(opts)
+    require("testonga").repeat_last_test(opts)
+end, {
+    nargs = 0,
+    desc = "Run last runned test",
+})

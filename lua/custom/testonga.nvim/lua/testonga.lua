@@ -14,9 +14,18 @@ M.setup = function(opts)
 end
 
 M.exec_current_test = function(_)
-    local bftype = util.buffer.get_filetype()
-    local foo = adapters[bftype]:get_current_test(0, util.buffer.get_current_line_number())
-    vim.notify(foo)
+    local adapter = adapters[util.buffer.get_filetype()] or nil
+    if adapter == nil then
+        vim.notify("Adapter not found")
+        return
+    end
+    local test_name = adapter:get_current_test(0, util.buffer.get_current_line_number())
+    local test_file_path = util.buffer.get_absolute_path()
+    if test_file_path == nil then
+        return
+    end
+    local test_command = adapter:get_test_command(test_file_path, test_name)
+    vim.notify(test_command)
 end
 
 M.exec_current_file = function(_)
@@ -39,13 +48,9 @@ M.create_test_for_current_file = function()
     -- adapters[bftype].get_current_test()
 end
 
--- Functions that we need
--- Get cmd to run test command
--- Get current test function
--- Get a list of test in file
--- Get test file for current file
--- Create test file for current file?
---
--- For all this we need adapters, so we can create specialize clases for each
+M.repeat_last_test = function()
+    local bftype = util.buffer.get_filetype()
+    -- adapters[bftype].get_current_test()
+end
 
 return M
