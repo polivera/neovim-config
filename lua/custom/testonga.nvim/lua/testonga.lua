@@ -25,7 +25,40 @@ M.exec_current_test = function(_)
         return
     end
     local test_command = adapter:get_test_command(test_file_path, test_name)
-    vim.notify(test_command)
+    local qf_items = {}
+
+    util.cmd.run_command(test_command, {
+        on_line = function(line, stream_type)
+            -- Remove leading || from output
+            line = line:gsub("^%|%| ", "")
+
+            if line ~= "" then
+                local qf_item = {
+                    text = line,
+                }
+
+                -- Parse file:line pattern for quickfix linking
+                -- TODO: Move this to a helper function for reuse
+                local file, line_num = line:match("(/[^:]+):(%d+)$")
+                if file and line_num then
+                    qf_item.filename = file
+                    qf_item.lnum = tonumber(line_num)
+                end
+
+                table.insert(qf_items, qf_item)
+                vim.fn.setqflist(qf_items)
+            end
+        end,
+        on_exit = function(code)
+            local notif_type = code == 0 and vim.log.levels.INFO or vim.log.levels.ERROR
+            vim.notify("Test finish with code " .. code, notif_type)
+            if code ~= 0 then
+                vim.cmd("copen")
+            else
+                vim.cmd("cclose")
+            end
+        end,
+    })
 end
 
 M.exec_current_file = function(_)
