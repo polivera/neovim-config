@@ -5,7 +5,7 @@
 local M = {}
 local util = require("mylib")
 local adapters = {
-    php = require("testonga.adapters.php_adapter"),
+    php = require("adapters.php-adapter"),
 }
 
 M.setup = function(opts)
@@ -14,24 +14,29 @@ M.setup = function(opts)
 end
 
 M.exec_current_test = function(_)
-    local bftype = util.buffer.get_buffer_filetype()
-    adapters[bftype].get_current_test()
+    local bftype = util.buffer.get_filetype()
+    local foo = adapters[bftype]:get_current_test(0, util.buffer.get_current_line_number())
+    vim.notify(foo)
 end
 
 M.exec_current_file = function(_)
-    print("Execute the current file")
+    local bftype = util.buffer.get_filetype()
+    -- adapters[bftype].get_current_test()
 end
 
 M.list_current_file_tests = function(_)
-    print("Get the tests of the currnet file")
+    local bftype = util.buffer.get_filetype()
+    -- adapters[bftype].get_current_test()
 end
 
 M.open_current_file_test = function(_)
-    print("open test of the current file")
+    local bftype = util.buffer.get_filetype()
+    -- adapters[bftype].get_current_test()
 end
 
 M.create_test_for_current_file = function()
-    print("Create a test for the current file")
+    local bftype = util.buffer.get_filetype()
+    -- adapters[bftype].get_current_test()
 end
 
 -- Functions that we need

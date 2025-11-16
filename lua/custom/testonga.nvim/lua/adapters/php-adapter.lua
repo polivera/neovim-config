@@ -1,5 +1,5 @@
 -- Example adapter implementation demonstrating the interface pattern
-local AdapterInterface = require("testonga.adapters_interface")
+local AdapterInterface = require("adapters-interface")
 
 ---@class PHPAdapter : AdapterInterface
 local PHPAdapter = AdapterInterface:new({

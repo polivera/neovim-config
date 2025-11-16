@@ -7,7 +7,7 @@ local function notify(message)
 end
 
 local function get_relative_path()
-    local path = mylib.get_relative_path()
+    local path = mylib.buffer.get_relative_path()
     if path == nil then
         notify("No file open")
     end
@@ -15,7 +15,7 @@ local function get_relative_path()
 end
 
 local function get_absolute_path()
-    local bufpath = mylib.get_absolute_path()
+    local bufpath = mylib.buffer.get_absolute_path()
     if bufpath == nil then
         notify("No file open")
     end

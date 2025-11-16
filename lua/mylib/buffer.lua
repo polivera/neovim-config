@@ -1,7 +1,7 @@
 -- Buffer helper functions
 local M = {}
 
-M.get_buffer_filetype = function(bufnr)
+M.get_filetype = function(bufnr)
     bufnr = bufnr or 0 -- default to current buffer
     return vim.bo[bufnr].filetype
 end
@@ -34,6 +34,10 @@ M.get_git_remote_url = function()
         return nil
     end
     return result
+end
+
+M.get_current_line_number = function()
+    return vim.fn.line(".")
 end
 
 return M
