@@ -4,6 +4,9 @@
 
 local M = {}
 local util = require("mylib")
+local adapters = {
+    php = require("testonga.adapters.php_adapter"),
+}
 
 M.setup = function(opts)
     opts = opts or {}
@@ -12,8 +15,7 @@ end
 
 M.exec_current_test = function(_)
     local bftype = util.buffer.get_buffer_filetype()
-    vim.notify(bftype)
-    print("execute test your cursor is currently on")
+    adapters[bftype].get_current_test()
 end
 
 M.exec_current_file = function(_)

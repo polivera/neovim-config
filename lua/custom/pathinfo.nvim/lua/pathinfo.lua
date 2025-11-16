@@ -1,40 +1,33 @@
 local M = {}
 
+local mylib = require("mylib")
+
 local function notify(message)
     vim.notify(message, vim.log.levels.INFO, { title = "PathInfo" })
 end
 
 local function get_relative_path()
-    local bufpath = vim.fn.expand("%:p")
-    if bufpath == "" then
+    local path = mylib.get_relative_path()
+    if path == nil then
         notify("No file open")
-        return nil
     end
-    local cwd = vim.fn.getcwd()
-    return vim.fn.fnamemodify(bufpath, ":." .. cwd)
+    return path
 end
 
 local function get_absolute_path()
-    local bufpath = vim.fn.expand("%:p")
-    if bufpath == "" then
+    local bufpath = mylib.get_absolute_path()
+    if bufpath == nil then
         notify("No file open")
-        return nil
     end
     return bufpath
 end
 
 local function get_git_remote_url()
-    -- Try to get the git remote URL
-    local handle = io.popen("git config --get remote.origin.url 2>/dev/null")
-    if not handle then
-        return nil
+    local path = mylib.buffer.get_git_remote_url()
+    if path == nil then
+        notify("Not a git project")
     end
-    local result = handle:read("*a"):gsub("\n", "")
-    handle:close()
-    if result == "" then
-        return nil
-    end
-    return result
+    return path
 end
 
 local function git_remote_to_web_url(remote_url)
