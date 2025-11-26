@@ -6,6 +6,7 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope.nvim",
     },
+    lazy = false,
     opts = {},
     config = function()
         require("todo-comments").setup()
