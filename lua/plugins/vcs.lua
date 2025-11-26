@@ -8,6 +8,9 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
+        keys = {
+            { "<leader>ol", "<cmd>DiffviewFileHistory %<cr>", desc = "File history (Diffview)" },
+        },
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -34,7 +37,7 @@ return {
         },
         keys = {
             { "<leader>og", "<cmd>Neogit<cr>", desc = "Neogit" },
-            { "<leader>ol", "<cmd>Neogit log<cr>", desc = "Neogit Log" },
+            { "<leader>oL", "<cmd>Neogit log<cr>", desc = "Neogit Log" },
             {
                 "<leader>of",
                 function()

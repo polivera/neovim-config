@@ -12,6 +12,7 @@ return {
             local lspconfig = require("lspconfig")
             require("plugins.languages.lua").setup(lspconfig)
             require("plugins.languages.php").setup(lspconfig)
+            require("plugins.languages.python").setup(lspconfig)
             require("plugins.languages.go").setup(lspconfig)
             require("plugins.languages.templ").setup(lspconfig)
             require("plugins.languages.terraform").setup(lspconfig)
@@ -32,6 +33,8 @@ return {
                 -- Lua
                 "lua_ls",
                 "stylua",
+                -- Python
+                "pyright",
                 -- Go
                 "gopls",
                 "goimports-reviser",
