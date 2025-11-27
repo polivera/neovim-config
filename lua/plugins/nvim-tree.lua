@@ -22,6 +22,9 @@ return {
         filters = {
             dotfiles = true,
         },
+        git = {
+            enable = false,
+        },
     },
     keys = {
         { "<leader>\\", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle NvimTree" },
