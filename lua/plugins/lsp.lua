@@ -22,6 +22,7 @@ return {
             require("plugins.languages.tailwindcss").setup(lspconfig)
             require("plugins.languages.docker").setup(lspconfig)
             require("plugins.languages.docker-compose").setup(lspconfig)
+            require("plugins.languages.java").setup(lspconfig)
         end,
     },
     { "mason-org/mason.nvim", opts = {} },
@@ -59,6 +60,8 @@ return {
                 -- Docker
                 "docker-language-server",
                 "docker-compose-language-service",
+                -- Java
+                "jdtls",
             },
         },
     },
