@@ -52,6 +52,7 @@ M.load = function()
             { import = "plugins.inline-diagnostics" },
             { import = "plugins.harpoon" },
             { import = "plugins.render-markdown" },
+            { import = "plugins.tabout" },
             { import = "plugins.obsidian" },
             { import = "plugins.database" },
             { import = "plugins.pathinfo" },
