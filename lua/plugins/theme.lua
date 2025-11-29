@@ -2,14 +2,14 @@
 -- @see https://github.com/folke/tokyonight.nvim
 
 -- Tokyo night
-return {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-        vim.cmd([[colorscheme tokyonight-night]])
-    end,
-}
+-- return {
+--     "folke/tokyonight.nvim",
+--     lazy = false,
+--     priority = 1000,
+--     config = function()
+--         vim.cmd([[colorscheme tokyonight-night]])
+--     end,
+-- }
 
 -- Gruvbox
 -- return {
@@ -35,3 +35,12 @@ return {
 --         vim.cmd.colorscheme("sonokai")
 --     end,
 -- }
+
+-- Dracula
+return {
+    -- add dracula
+    "Mofiqul/dracula.nvim",
+    config = function()
+        vim.cmd.colorscheme("dracula")
+    end,
+}
