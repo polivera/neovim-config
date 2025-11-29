@@ -16,6 +16,7 @@ return {
             { "<leader>o", group = "Git" },
             { "<leader>s", group = "TODOs" },
             { "<leader>x", group = "Trouble" },
+            { "<leader>a", group = "Tabs" },
         })
     end,
     keys = {

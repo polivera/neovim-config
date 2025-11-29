@@ -57,6 +57,10 @@ M.init = function()
     -- Buffer
     vim.keymap.set("n", "<leader>wr", "<cmd>edit!<cr>", { desc = "Reload buffer" })
     vim.keymap.set("n", "<C-0>", "<C-^>", { desc = "Jump to alternate buffer" })
+
+    -- Tabs
+    vim.keymap.set("n", "<leader>an", "<cmd>tabnew<cr>", { desc = "New tab" })
+    vim.keymap.set("n", "<leader>aq", "<cmd>tabclose<cr>", { desc = "Close tab" })
 end
 
 return M
