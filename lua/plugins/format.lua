@@ -13,6 +13,7 @@ return {
             javascript = { "prettier" },
             yaml = { "prettier" },
             vue = { "prettier" },
+            python = { "black" },
         },
 
         format_on_save = {

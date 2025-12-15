@@ -21,6 +21,7 @@ return {
         },
         filters = {
             dotfiles = true,
+            custom = { "__pycache__" },
         },
         git = {
             enable = false,

@@ -36,6 +36,8 @@ return {
                 "stylua",
                 -- Python
                 "pyright",
+                "ruff",
+                "black",
                 -- Go
                 "gopls",
                 "goimports-reviser",
