@@ -35,6 +35,7 @@ M.load = function()
             { import = "plugins.nvim-cmp" },
             -- { import = "plugins.blink" },
             { import = "plugins.format" },
+            { import = "plugins.lint" },
             { import = "plugins.oil" },
             { import = "plugins.theme" },
             { import = "plugins.todo" },

@@ -35,9 +35,10 @@ return {
                 "lua_ls",
                 "stylua",
                 -- Python
-                "pyright",
+                "basedpyright",
                 "ruff",
                 "black",
+                "debugpy",
                 -- Go
                 "gopls",
                 "goimports-reviser",

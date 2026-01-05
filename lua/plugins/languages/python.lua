@@ -1,4 +1,4 @@
--- LSP configuration for Python (pyright)
+-- LSP configuration for Python (basedpyright)
 local M = {}
 
 M.setup = function(lspconfig)
@@ -26,20 +26,21 @@ M.setup = function(lspconfig)
         return "python3"
     end
 
-    lspconfig.pyright.setup({
+    lspconfig.basedpyright.setup({
         on_attach = globals.lsp_default_attach,
         capabilities = globals.get_capabilities(),
-        before_init = function(init_params, config)
-            config.settings.python.pythonPath = get_python_path()
-        end,
         settings = {
-            python = {
+            basedpyright = {
                 analysis = {
                     autoSearchPaths = true,
-                    diagnosticMode = "workspace",
+                    diagnosticMode = "openFilesOnly",
                     useLibraryCodeForTypes = true,
                     typeCheckingMode = "standard",
+                    autoImportCompletions = true,
                 },
+            },
+            python = {
+                pythonPath = get_python_path(),
             },
         },
     })

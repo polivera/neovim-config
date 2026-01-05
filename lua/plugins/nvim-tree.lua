@@ -29,5 +29,6 @@ return {
     },
     keys = {
         { "<leader>\\", "<cmd>NvimTreeFindFileToggle<cr>", desc = "Toggle NvimTree" },
+        { "<leader>f\\", "<cmd>NvimTreeFindFile<cr>", desc = "NvimTree find file" },
     },
 }

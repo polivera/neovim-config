@@ -13,7 +13,7 @@ return {
             javascript = { "prettier" },
             yaml = { "prettier" },
             vue = { "prettier" },
-            python = { "black" },
+            python = { "ruff_fix", "ruff_format" },
         },
 
         format_on_save = {
@@ -22,6 +22,18 @@ return {
         },
 
         formatters = {
+            ["ruff_fix"] = {
+                command = "ruff",
+                args = {
+                    "check",
+                    "--fix",
+                    "--select", "I,F401", -- I: import sorting, F401: unused imports
+                    "--stdin-filename",
+                    "$FILENAME",
+                    "-",
+                },
+                stdin = true,
+            },
             ["php-cs-fixer"] = {
                 command = "php-cs-fixer",
                 args = {
