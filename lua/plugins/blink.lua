@@ -5,18 +5,18 @@ return {
         version = "v2.*",
         build = "make install_jsregexp",
         dependencies = {
-            {
-                "rafamadriz/friendly-snippets",
-                config = function()
-                    require("luasnip.loaders.from_vscode").lazy_load()
-                end,
-            },
+            "rafamadriz/friendly-snippets",
         },
-        opts = {},
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+            require("snippets.php")
+        end,
     },
     {
         "saghen/blink.cmp",
+        dependencies = { "L3MON4D3/LuaSnip" },
         opts = {
+            snippets = { preset = "luasnip" },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
                 providers = {
