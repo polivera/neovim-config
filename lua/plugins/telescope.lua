@@ -9,6 +9,7 @@ return {
         },
         "nvim-telescope/telescope-live-grep-args.nvim",
         "nvim-tree/nvim-web-devicons",
+        "nvim-telescope/telescope-dap.nvim",
     },
     config = function()
         local telescope = require("telescope")
@@ -102,6 +103,7 @@ return {
         -- Load extensions
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
+        telescope.load_extension("dap")
     end,
     keys = {
         {
