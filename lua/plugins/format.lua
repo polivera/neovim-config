@@ -13,6 +13,7 @@ return {
             javascript = { "prettier" },
             yaml = { "prettier" },
             vue = { "prettier" },
+            svelte = { "prettier" },
             python = { "ruff_fix", "ruff_format" },
         },
 

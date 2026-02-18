@@ -23,6 +23,7 @@ return {
             require("plugins.languages.docker").setup(lspconfig)
             require("plugins.languages.docker-compose").setup(lspconfig)
             require("plugins.languages.java").setup(lspconfig)
+            require("plugins.languages.svelte").setup(lspconfig)
         end,
     },
     { "mason-org/mason.nvim", opts = {} },
@@ -65,6 +66,8 @@ return {
                 "docker-compose-language-service",
                 -- Java
                 "jdtls",
+                -- Svelte
+                "svelte-language-server",
             },
         },
     },

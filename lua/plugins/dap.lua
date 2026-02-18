@@ -47,6 +47,20 @@ return {
         dap.listeners.before.event_terminated["dapui_config"] = dapui.close
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
+        -- launch.json loader (type_to_filetypes maps DAP adapter name → filetypes)
+        local vscode = require("dap.ext.vscode")
+        local launch_filetypes = { delve = { "go" }, python = { "python" }, php = { "php" } }
+        local function load_launch_json()
+            local path = vim.fn.getcwd() .. "/.vscode/launch.json"
+            if vim.fn.filereadable(path) == 1 then
+                pcall(vscode.load_launchjs, path, launch_filetypes)
+                vim.notify("launch.json loaded", vim.log.levels.INFO)
+            else
+                vim.notify("No .vscode/launch.json found in " .. vim.fn.getcwd(), vim.log.levels.WARN)
+            end
+        end
+        load_launch_json()
+
         -- DAP keymaps
         wk.add({
             { "<leader>d", group = "Debugger" },
@@ -55,6 +69,7 @@ return {
             { "<leader>di", dap.step_into, desc = " Step Into" },
             { "<leader>du", dap.step_out, desc = " Step Out" },
             { "<leader>db", dap.toggle_breakpoint, desc = " Toggle Breakpoint" },
+            { "<leader>dl", load_launch_json, desc = "Reload launch.json" },
             { "<leader>dr", dap.repl.open, desc = "Open Repl" },
             { "<leader>dq", dapui.close, desc = "Close DAP ui" },
             { "<leader>df", dapui.float_element, desc = "Float element" },
