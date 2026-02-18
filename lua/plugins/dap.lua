@@ -16,6 +16,26 @@ return {
             render = {
                 max_value_lines = 100,
             },
+            layouts = {
+                {
+                    elements = {
+                        { id = "scopes", size = 0.4 },
+                        { id = "breakpoints", size = 0.2 },
+                        { id = "stacks", size = 0.2 },
+                        { id = "watches", size = 0.2 },
+                    },
+                    position = "left",
+                    size = 40,
+                },
+                {
+                    elements = {
+                        { id = "console", size = 0.6 },
+                        { id = "repl", size = 0.4 },
+                    },
+                    position = "bottom",
+                    size = 12,
+                },
+            },
             controls = {
                 element = "repl",
                 enabled = true,
@@ -49,7 +69,7 @@ return {
 
         -- launch.json loader (type_to_filetypes maps DAP adapter name → filetypes)
         local vscode = require("dap.ext.vscode")
-        local launch_filetypes = { delve = { "go" }, python = { "python" }, php = { "php" } }
+        local launch_filetypes = { delve = { "go" }, go = { "go" }, python = { "python" }, php = { "php" } }
         local function load_launch_json()
             local path = vim.fn.getcwd() .. "/.vscode/launch.json"
             if vim.fn.filereadable(path) == 1 then

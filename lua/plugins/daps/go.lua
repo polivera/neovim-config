@@ -4,8 +4,7 @@ local M = {}
 M.setup = function()
     local dap = require("dap")
 
-    -- PHP Debug Adapter Configuration
-    dap.adapters.delve = {
+    local delve_adapter = {
         type = "server",
         port = "${port}",
         executable = {
@@ -13,6 +12,9 @@ M.setup = function()
             args = { "dap", "-l", "127.0.0.1:${port}" },
         },
     }
+    -- Register under both names: "delve" for nvim configs, "go" for launch.json compatibility
+    dap.adapters.delve = delve_adapter
+    dap.adapters.go = delve_adapter
 
     dap.configurations.go = {
         {
