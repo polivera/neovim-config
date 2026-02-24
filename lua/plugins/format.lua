@@ -62,18 +62,6 @@ return {
                 },
                 stdin = true,
             },
-            ["prettier"] = {
-                command = "prettier",
-                args = {
-                    "--stdin-filepath",
-                    "$FILENAME",
-                    "--tab-width",
-                    "2",
-                    "--use-tabs",
-                    "false",
-                },
-                stdin = true,
-            },
         },
     },
 }
