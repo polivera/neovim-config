@@ -1,12 +1,8 @@
 -- LSP configuration for PHP (intelephense)
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
-    lspconfig.intelephense.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
+M.setup = function()
+    vim.lsp.config("intelephense", {
         init_options = {
             licenceKey = os.getenv("INTELEPHENSE_KEY"),
         },

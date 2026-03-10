@@ -1,12 +1,9 @@
--- lsp configuration for lua_ls
+-- LSP configuration for terraformls
 local m = {}
 
-m.setup = function(lspconfig)
-    local globals = require("config.globals")
-    lspconfig.terraformls.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
-        root_dir = lspconfig.util.root_pattern(".terraform", ".git", "terraform.tf"),
+m.setup = function()
+    vim.lsp.config("terraformls", {
+        root_markers = { ".terraform", ".git", "terraform.tf" },
         filetypes = { "terraform", "terraform-vars" },
         settings = {
             terraform = {

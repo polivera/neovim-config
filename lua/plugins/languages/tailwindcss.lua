@@ -1,12 +1,8 @@
 -- LSP configuration for Tailwind CSS
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
-    lspconfig.tailwindcss.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
+M.setup = function()
+    vim.lsp.config("tailwindcss", {
         filetypes = {
             "html",
             "css",
@@ -56,7 +52,7 @@ M.setup = function(lspconfig)
                 },
             },
         },
-        root_dir = lspconfig.util.root_pattern(
+        root_markers = {
             "tailwind.config.js",
             "tailwind.config.ts",
             "tailwind.config.cjs",
@@ -64,8 +60,8 @@ M.setup = function(lspconfig)
             "postcss.config.js",
             "postcss.config.ts",
             "package.json",
-            ".git"
-        ),
+            ".git",
+        },
     })
 end
 

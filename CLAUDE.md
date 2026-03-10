@@ -45,17 +45,17 @@ Each plugin file in `lua/plugins/` returns either a single spec table or an arra
 Common lazy-loading triggers: `event = "VeryLazy"`, `keys = {...}`, `lazy = false` (immediate load)
 
 ### LSP Configuration Pattern
-LSP setup follows a coordinator pattern:
-- `lua/plugins/lsp.lua` - Orchestrator that calls each language module's `.setup(lspconfig)` and configures mason-tool-installer
-- `lua/plugins/languages/*.lua` - Individual language modules, each exports a `.setup(lspconfig)` function
+LSP setup uses the native `vim.lsp.config()` / `vim.lsp.enable()` API (Neovim 0.11+):
+- `lua/plugins/lsp.lua` - Orchestrator that sets global LSP config via `vim.lsp.config('*', ...)`, calls each language module's `.setup()`, and calls `vim.lsp.enable(...)` for all servers
+- `lua/plugins/languages/*.lua` - Individual language modules, each exports a `.setup()` function that calls `vim.lsp.config('server_name', {...})`
 - `lua/config/globals.lua` - Exports:
-  - `lsp_default_attach(_, bufnr)` - Sets buffer-local LSP keymaps; used in every language server's `on_attach`
-  - `get_capabilities()` - Merges blink.cmp capabilities with default LSP capabilities; pass to every server
+  - `lsp_default_attach(_, bufnr)` - Sets buffer-local LSP keymaps; applied globally via `vim.lsp.config('*')`
+  - `get_capabilities()` - Merges blink.cmp capabilities with default LSP capabilities; applied globally via `vim.lsp.config('*')`
 
 When adding a new language server:
-1. Create `lua/plugins/languages/LANGUAGE.lua` with a `.setup(lspconfig)` function
-2. Call `globals.lsp_default_attach` in `on_attach` and `globals.get_capabilities()` for capabilities
-3. Import and call it in `lua/plugins/lsp.lua`
+1. Create `lua/plugins/languages/LANGUAGE.lua` with a `.setup()` function that calls `vim.lsp.config('server_name', {...})` with server-specific settings (on_attach and capabilities are inherited from the wildcard config)
+2. Call the setup function from `lua/plugins/lsp.lua`
+3. Add the server name to the `vim.lsp.enable({...})` list in `lsp.lua`
 4. Add the server name and any formatters/linters to mason-tool-installer's `ensure_installed` list in `lsp.lua`
 
 ### DAP Configuration Pattern
@@ -107,7 +107,7 @@ return M
 Plugin language/DAP files use:
 ```lua
 local M = {}
-M.setup = function(lspconfig) ... end  -- or just M.setup = function() ... end for DAPs
+M.setup = function() ... end
 return M
 ```
 

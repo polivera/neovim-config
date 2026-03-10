@@ -1,13 +1,10 @@
--- lsp configuration for lua_ls
+-- LSP configuration for dockerls
 local m = {}
 
-m.setup = function(lspconfig)
-    local globals = require("config.globals")
-    lspconfig.dockerls.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
+m.setup = function()
+    vim.lsp.config("dockerls", {
         cmd = { "docker-language-server", "start", "--stdio" },
-        root_dir = lspconfig.util.root_pattern(".git"),
+        root_markers = { ".git" },
         filetypes = { "Dockerfile", "dockerfile" },
     })
 end

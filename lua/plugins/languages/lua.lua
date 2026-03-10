@@ -1,11 +1,8 @@
 -- LSP configuration for lua_ls
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
-    lspconfig.lua_ls.setup({
-        on_attach = globals.lsp_default_attach,
+M.setup = function()
+    vim.lsp.config("lua_ls", {
         settings = {
             Lua = {
                 runtime = {

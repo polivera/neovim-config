@@ -1,12 +1,8 @@
--- LSP configuration for lua_ls
+-- LSP configuration for templ
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
-    lspconfig.templ.setup({
-        on_attach = globals.lsp_default_attach,
-    })
+M.setup = function()
+    vim.lsp.config("templ", {})
 end
 
 return M

@@ -59,7 +59,7 @@ M.load = function()
             { import = "plugins.database" },
             { import = "plugins.pathinfo" },
             { import = "plugins.testonga" },
-            { import = "plugins.neorg" },
+            -- { import = "plugins.neorg" },
         },
         install = { colorscheme = { globals.colorscheme } },
         -- Automaticall checks for plugin updates

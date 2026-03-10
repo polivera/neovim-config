@@ -1,10 +1,10 @@
 -- LSP configuration for gopls
 local M = {}
 
-M.setup = function(lspconfig)
+M.setup = function()
     local globals = require("config.globals")
 
-    lspconfig.gopls.setup({
+    vim.lsp.config("gopls", {
         on_attach = function(client, bufnr)
             globals.lsp_default_attach(client, bufnr)
 

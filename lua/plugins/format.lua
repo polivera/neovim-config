@@ -6,7 +6,7 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            go = { "goimports-reviser", "goimports", "gofmt", stop_after_first = true },
+            go = { "goimports", "gofmt", stop_after_first = true },
             php = { "php-cs-fixer" },
             terraform = { "terraform" },
             templ = { "templ" },
@@ -28,7 +28,8 @@ return {
                 args = {
                     "check",
                     "--fix",
-                    "--select", "I,F401", -- I: import sorting, F401: unused imports
+                    "--select",
+                    "I,F401", -- I: import sorting, F401: unused imports
                     "--stdin-filename",
                     "$FILENAME",
                     "-",

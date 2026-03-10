@@ -1,12 +1,9 @@
--- lsp configuration for lua_ls
+-- LSP configuration for html
 local m = {}
 
-m.setup = function(lspconfig)
-    local globals = require("config.globals")
-    lspconfig.html.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
-        root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+m.setup = function()
+    vim.lsp.config("html", {
+        root_markers = { "package.json", ".git" },
         filetypes = { "html", "templ" },
         settings = {
             css = {

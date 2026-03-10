@@ -1,12 +1,9 @@
--- lsp configuration for lua_ls
+-- LSP configuration for cssls
 local m = {}
 
-m.setup = function(lspconfig)
-    local globals = require("config.globals")
-    lspconfig.cssls.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
-        root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+m.setup = function()
+    vim.lsp.config("cssls", {
+        root_markers = { "package.json", ".git" },
         filetypes = { "css", "templ" },
         settings = {
             css = {

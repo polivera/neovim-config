@@ -1,9 +1,7 @@
 -- LSP configuration for Python (basedpyright)
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
+M.setup = function()
     -- Function to detect virtual environment path
     local function get_python_path()
         local venv = os.getenv("VIRTUAL_ENV")
@@ -26,9 +24,7 @@ M.setup = function(lspconfig)
         return "python3"
     end
 
-    lspconfig.basedpyright.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
+    vim.lsp.config("basedpyright", {
         settings = {
             basedpyright = {
                 analysis = {

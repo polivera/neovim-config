@@ -1,12 +1,14 @@
 -- LSP configuration for Java (jdtls)
 local M = {}
 
-M.setup = function(lspconfig)
-    local globals = require("config.globals")
-
+M.setup = function()
     -- Get the jdtls installation path from Mason
     local mason_registry = require("mason-registry")
-    local jdtls_path = mason_registry.get_package("jdtls"):get_install_path()
+    local ok, jdtls_pkg = pcall(mason_registry.get_package, "jdtls")
+    if not ok or not jdtls_pkg:is_installed() then
+        return
+    end
+    local jdtls_path = jdtls_pkg:get_install_path()
 
     -- Determine the OS-specific config directory
     local function get_os_config()
@@ -26,9 +28,7 @@ M.setup = function(lspconfig)
         return workspace_dir
     end
 
-    lspconfig.jdtls.setup({
-        on_attach = globals.lsp_default_attach,
-        capabilities = globals.get_capabilities(),
+    vim.lsp.config("jdtls", {
         cmd = {
             "java",
             "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -44,7 +44,7 @@ M.setup = function(lspconfig)
             "-configuration", jdtls_path .. "/" .. get_os_config(),
             "-data", get_workspace_dir(),
         },
-        root_dir = lspconfig.util.root_pattern(".git", "mvnw", "gradlew", "pom.xml", "build.gradle"),
+        root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
         settings = {
             java = {
                 eclipse = {

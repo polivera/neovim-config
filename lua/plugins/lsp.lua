@@ -3,27 +3,48 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        opts = {
-            diagnostics = {
-                virtual_text = false,
-            },
-        },
         config = function()
-            local lspconfig = require("lspconfig")
-            require("plugins.languages.lua").setup(lspconfig)
-            require("plugins.languages.php").setup(lspconfig)
-            require("plugins.languages.python").setup(lspconfig)
-            require("plugins.languages.go").setup(lspconfig)
-            require("plugins.languages.templ").setup(lspconfig)
-            require("plugins.languages.terraform").setup(lspconfig)
-            require("plugins.languages.javascript").setup(lspconfig)
-            require("plugins.languages.css").setup(lspconfig)
-            require("plugins.languages.html").setup(lspconfig)
-            require("plugins.languages.tailwindcss").setup(lspconfig)
-            require("plugins.languages.docker").setup(lspconfig)
-            require("plugins.languages.docker-compose").setup(lspconfig)
-            require("plugins.languages.java").setup(lspconfig)
-            require("plugins.languages.svelte").setup(lspconfig)
+            local globals = require("config.globals")
+
+            -- Global LSP configuration for all servers
+            vim.lsp.config("*", {
+                on_attach = globals.lsp_default_attach,
+                capabilities = globals.get_capabilities(),
+            })
+
+            -- Load language-specific configurations
+            require("plugins.languages.lua").setup()
+            require("plugins.languages.php").setup()
+            require("plugins.languages.python").setup()
+            require("plugins.languages.go").setup()
+            require("plugins.languages.templ").setup()
+            require("plugins.languages.terraform").setup()
+            require("plugins.languages.javascript").setup()
+            require("plugins.languages.css").setup()
+            require("plugins.languages.html").setup()
+            require("plugins.languages.tailwindcss").setup()
+            require("plugins.languages.docker").setup()
+            require("plugins.languages.docker-compose").setup()
+            require("plugins.languages.java").setup()
+            require("plugins.languages.svelte").setup()
+
+            -- Enable all language servers
+            vim.lsp.enable({
+                "lua_ls",
+                "intelephense",
+                "basedpyright",
+                "gopls",
+                "templ",
+                "terraformls",
+                "ts_ls",
+                "cssls",
+                "html",
+                "tailwindcss",
+                "dockerls",
+                "docker_compose_language_service",
+                "jdtls",
+                "svelte",
+            })
         end,
     },
     { "mason-org/mason.nvim", opts = {} },
