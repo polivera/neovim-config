@@ -8,7 +8,8 @@ M.setup = function()
     if not ok or not jdtls_pkg:is_installed() then
         return
     end
-    local jdtls_path = jdtls_pkg:get_install_path()
+    -- local jdtls_path = jdtls_pkg:get_install_path()
+    local jdtls_path = vim.fn.expand("$MASON/packages/jdtls")
 
     -- Determine the OS-specific config directory
     local function get_os_config()
@@ -38,11 +39,16 @@ M.setup = function()
             "-Dlog.level=ALL",
             "-Xmx1g",
             "--add-modules=ALL-SYSTEM",
-            "--add-opens", "java.base/java.util=ALL-UNNAMED",
-            "--add-opens", "java.base/java.lang=ALL-UNNAMED",
-            "-jar", vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
-            "-configuration", jdtls_path .. "/" .. get_os_config(),
-            "-data", get_workspace_dir(),
+            "--add-opens",
+            "java.base/java.util=ALL-UNNAMED",
+            "--add-opens",
+            "java.base/java.lang=ALL-UNNAMED",
+            "-jar",
+            vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
+            "-configuration",
+            jdtls_path .. "/" .. get_os_config(),
+            "-data",
+            get_workspace_dir(),
         },
         root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" },
         settings = {

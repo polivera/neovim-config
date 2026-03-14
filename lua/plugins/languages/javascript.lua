@@ -11,7 +11,7 @@ M.setup = function()
     if vue_ok and vue_pkg:is_installed() then
         table.insert(plugins, {
             name = "@vue/typescript-plugin",
-            location = vue_pkg:get_install_path() .. "/node_modules/@vue/language-server",
+            location = vim.fn.expand("$MASON/packages/vue-language-server/node_modules/@vue/language-server"),
             languages = { "vue" },
         })
     end
@@ -21,7 +21,7 @@ M.setup = function()
     if svelte_ok and svelte_pkg:is_installed() then
         table.insert(plugins, {
             name = "typescript-svelte-plugin",
-            location = svelte_pkg:get_install_path() .. "/node_modules/typescript-svelte-plugin",
+            location = vim.fn.expand("$MASON/packages/svelte-language-server/node_modules/typescript-svelte-plugin"),
             languages = { "svelte" },
         })
     end
